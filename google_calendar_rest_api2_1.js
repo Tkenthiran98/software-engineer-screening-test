@@ -18,6 +18,7 @@ const oauth2Client = new google.auth.OAuth2(
 );
 
 oauth2Client.setCredentials({
+    // my access token
     access_token: "ya29.a0ARW5m75lozDPIYD9dQsKVCiEqYplGBxBsGraUurYY0Kbsao-z2xL5zqdb61b8jjHYIz88f66qxBdivPk3C69-DjcggAUSpBOxaTVwsn_yxK018wpnlnsBbhmjQPJiRLBui2eX_Eqc8Uas153iOW6BI9LeAUcRbZIuG1f9TfLaCgYKAfwSARESFQHGX2MiYGgtIDyP_YJaJlka_6qFwA0175",
 });
 
@@ -43,13 +44,12 @@ async function getBusyIntervals() {
 
 getBusyIntervals();
 
-
 /*
-API Deatls 
-post method :
-https://www.googleapis.com/calendar/v3/freeBusy
+API Details:
 
-body : 
+POST method: https://www.googleapis.com/calendar/v3/freeBusy
+
+Request Body:
 {
   "timeMin": "2024-12-01T00:00:00Z",
   "timeMax": "2024-12-31T23:59:59Z",
@@ -58,19 +58,29 @@ body :
   ]
 }
 
-reponse :
-
+Response (if no events are present for the given time):
 {
   "kind": "calendar#freeBusy",
   "timeMin": "2024-12-13T00:00:00.000Z",
   "timeMax": "2024-12-13T23:59:59.000Z",
   "calendars": {
     "2018a151@gmail.com": {
-      "busy": [
-      ]
+      "busy": []
     }
   }
 }
 
+OAuth Token Details:
+Token Name: my app calendar
+Access Token: ya29.a0ARW5m75lozDPIYD9dQsKVCiEqYplGBxBsGraUurYY0Kbsao-z2xL5zqdb61b8jjHYIz88f66qxBdivPk3C69-DjcggAUSpBOxaTVwsn_yxK018wpnlnsBbhmjQPJiRLBui2eX_Eqc8Uas153iOW6BI9LeAUcRbZIuG1f9TfLaCgYKAfwSARESFQHGX2MiYGgtIDyP_YJaJlka_6qFwA0175
+Authorization Header: Bearer <Access_Token>
+Auto-refresh Token: Your expired token will be auto-refreshed before sending a request.
+
+Token Request URL: https://oauth2.googleapis.com/token
+Authorization URL: https://accounts.google.com/o/oauth2/auth
+Redirect URI: https://oauth.pstmn.io/v1/callback
+Client ID: 31007035729-ihij20jvhrmiveje2qq1sf4anjh35jts.apps.googleusercontent.com
+Client Secret: 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
+Scope: https://www.googleapis.com/auth/calendar.readonly
 
 */
